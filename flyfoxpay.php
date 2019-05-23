@@ -6,7 +6,6 @@
  * Author: 翔狐科技
  * Author URI: https://flyfoxpay.com/
  * Version: 1.0.2
- 
  */
  
 defined( 'ABSPATH' ) or exit;
@@ -148,8 +147,10 @@ if($json['sign']==$sign1){
     	// Mark as on-hold (we're awaiting the payment)
     	$order->payment_complete();
 			
-    
-  echo '驗證成功';
+     if($_POST['orderid']!=='' OR $_POST['orderid']!==null){
+               header('Content-Type: application/json');
+               echo '{"ok":"ok"}';}else{
+               echo 'success';}
 }else{
   echo '驗證失敗';
 }}
