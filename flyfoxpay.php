@@ -106,7 +106,7 @@ function wc_flyfoxpay_gateway_init() {
 		}
 		public function ycallback() {
   	   if(@$_REQUEST['orderid']==null OR @$_REQUEST['orderid']==''){echo '驗證失敗e';}else{
-    $url = "https://sc-i.pw/api/check/";//API位置
+    $url = "https://api.flyfoxpay.com/api/check/";//API位置
  
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
@@ -240,9 +240,7 @@ die();
 	// I recommend to use inique IDs, because other gateways could already use #ccNo, #expdate, #cvc
 	echo '<div class="form-row form-row-wide"><label>選擇付款方式 <span class="required">*</span></label>
 		<select name="type" id="type">
-　<option value="alipay">支付寶</option>
-　<option value="wxpay">微信</option>
-　<option value="paypal">PAYPAL</option>
+　<option value="all">多種支付方式</option>
 </select>
 		</div>
 		
@@ -282,7 +280,7 @@ die();
                     $total_amount = $order->order_total;
                     $get_return_url=$this->get_return_url($order);
                     $order_id = $order->id;
-                    $url = "https://sc-i.pw/api/";//API位置
+                    $url = "https://api.flyfoxpay.com/api/";//API位置
  
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL, $url);
